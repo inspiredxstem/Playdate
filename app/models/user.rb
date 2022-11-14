@@ -1,4 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
-    validates :username, uniqueness: true
+    has_many :chatrooms
+    has_many :messages, through: :chatrooms
+
+    validates :username, presence: true, uniqueness: true
+    validates :profile_pic, presence: true
+
 end

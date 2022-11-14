@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_09_203507) do
     t.string "animal"
     t.string "gender"
     t.string "profile_pic"
+    t.string "location"
 
 
     t.datetime "created_at", null: false
