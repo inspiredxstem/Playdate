@@ -11,4 +11,27 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :profile_pic, presence: true
 
+    def get_conversations
+        conversations = []
+
+        self.convos_a.each do |convo|
+            info = {
+                convo: convo,
+                user_a_username: User.find(convo.user_a_id).username,
+                user_b_username: User.find(convo.user_b_id).username
+            }
+            conversations << info
+        end
+        
+        self.convos_b.each do |convo|
+            info = {
+                convo: convo,
+                user_a_username: User.find(convo.user_a_id).username,
+                user_b_username: User.find(convo.user_b_id).username
+            }
+            conversations << info
+        end
+
+        conversations
+    end
 end

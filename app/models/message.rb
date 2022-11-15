@@ -2,11 +2,11 @@ class Message < ApplicationRecord
     belongs_to :user
     belongs_to :conversation
 
-    def user_prof_pic
+    def current_user_profile_pic
         self.user.profile_pic
     end
 
-    def user_username
+    def current_user_username
         self.user.username
     end
 end
