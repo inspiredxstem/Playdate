@@ -1,10 +1,12 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   //   const handleRegister = (e) => {
   //     fetch("http://localhost:3000/users", {
@@ -25,6 +27,7 @@ function Register() {
       .post("http://localhost:3000/users", { username, password })
       .then((r) => {
         console.log(r.data);
+        navigate("/pets");
       })
       .catch(function (error) {
         if (error.response) {
@@ -65,7 +68,9 @@ function Register() {
         <div className="p-container">
           <p>Have an account?</p>
           <p>
-            <a href="/login" className="dark-link">Login</a>
+            <a href="/login" className="dark-link">
+              Login
+            </a>
           </p>
         </div>
       </form>

@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :login]
+    skip_before_action :authorize, only: [:create, :login, :index]
+    
+    def index
+        users = User.all
+        render json: users
+        # Going to add pet_params to this later
+    end
     
     def create
         user = User.create!(user_params)
@@ -30,4 +36,9 @@ class UsersController < ApplicationController
     def login_params
         params.permit(:username, :password)
     end
+
+    def pet_params
+        params.permit(:bio, :name, :age, :animal, :gender, :profile_pic)
+    end
+
 end

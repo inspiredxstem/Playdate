@@ -1,13 +1,14 @@
+import { React, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import PetCards from "./PetCards";
 
 function Pets({ users }) {
-  const petsDisplay = users.map((user) => (
-    <PetCards key={user.id} user={user} />
+  const petsDisplay = Array.from(users).map((users) => (
+    <PetCards key={users.id} users={users} />
   ));
 
-  console.log(petsDisplay);
+  // console.log(petsDisplay);
 
   return (
     <div>

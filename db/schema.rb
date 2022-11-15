@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_144311) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_15_174920) do
   create_table "conversations", force: :cascade do |t|
     t.integer "user_a_id"
     t.integer "user_b_id"

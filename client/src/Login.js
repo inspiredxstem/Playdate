@@ -13,7 +13,7 @@ function Login() {
   function handleSubmit(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/auth/login", { username, password })
+      .post("http://localhost:3000/login", { username, password })
       .then((r) => {
         console.log(r.data);
         navigate("/pets");
@@ -37,30 +37,32 @@ function Login() {
   }
 
   return (
-    <div className="login-cont">
+    <div>
       <Header />
-      <div className="log-form">
-        <h2>Welcome back!</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            title="username"
-            placeholder="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            title="username"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">LOGIN</button>
-          {/* <a className="forgot" href="#">Forgot Username?</a> */}
-        </form>
+      <div className="login-cont">
+        <div className="log-form">
+          <h2>Welcome back!</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              title="username"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              title="username"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">LOGIN</button>
+            {/* <a className="forgot" href="#">Forgot Username?</a> */}
+          </form>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }
