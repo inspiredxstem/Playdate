@@ -19,8 +19,8 @@
 
 .App-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
   padding-bottom: 100px;
   font-size: calc(10px + 2vmin);
 }
@@ -72,7 +72,6 @@
   align-items: center;
   width: 250px;
   height: min-content;
-  /* border-radius: 10px; */
   border: var(--wht) 1px solid;
   background-color: var(--wht);
   border-radius: 7px;
@@ -87,11 +86,9 @@ input {
   font-family: "Futura", sans-serif;
   font-size: 16px;
   margin: 5px;
-  /* background-color: var(--grey-0); */
 }
 
 button {
-  /* border: var(--wht) 1px solid; */
   border: none;
   border-radius: 20px;
   font-family: "Futura", sans-serif;
@@ -126,7 +123,6 @@ p {
   justify-content: space-between;
   align-items: center;
   margin: 20px 55px 0px;
-  /* width: 200px; */
 }
 
 .navbar {
@@ -136,7 +132,6 @@ p {
   height: 44px;
   width: 100%;
   color: var(--wht);
-  /* background: var(--cerise-1); */
   position: relative;
   left: 0;
   top: 0;
@@ -147,7 +142,6 @@ p {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* padding-right: 15px; */
 }
 
 .MailLink {
@@ -212,9 +206,8 @@ footer {
   position: absolute;
   text-align: center;
   color: var(--wht);
-  /* background-color: var(--blk); */
   font-family: "Futura", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 100px;

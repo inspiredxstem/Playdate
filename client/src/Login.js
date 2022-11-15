@@ -1,12 +1,14 @@
 import "./App.css";
-import Navbar from "./Navbar";
+import Header from "./Header";
 import Footer from "./Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,6 +16,7 @@ function Login() {
       .post("http://localhost:3000/auth/login", { username, password })
       .then((r) => {
         console.log(r.data);
+        navigate("/pets");
       })
       .catch(function (error) {
         if (error.response) {
@@ -35,7 +38,7 @@ function Login() {
 
   return (
     <div className="login-cont">
-      <Navbar />
+      <Header />
       <div className="log-form">
         <h2>Welcome back!</h2>
         <form onSubmit={handleSubmit}>
