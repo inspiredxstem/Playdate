@@ -13,7 +13,9 @@ function Pets({ users }) {
   return (
     <div>
       <Navbar />
-      <div className="pet-feed">{petsDisplay}</div>
+      <div className="feed-container">
+        <div className="pet-feed">{petsDisplay}</div>
+      </div>
       <Footer />
     </div>
   );
