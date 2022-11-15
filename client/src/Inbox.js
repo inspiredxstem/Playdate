@@ -2,7 +2,8 @@ import react from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-function Chat() {
+
+function Inbox() {
   return (
     <div>
       <Navbar />
@@ -14,4 +15,4 @@ function Chat() {
   );
 }
 
-export default Chat;
+export default Inbox;

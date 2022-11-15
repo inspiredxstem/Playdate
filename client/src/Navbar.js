@@ -8,7 +8,7 @@ function Navbar() {
         <img src="playdate-wide-trans.png" className="nav-logo" alt="logo" />
       </Link>
       <nav className="links">
-        <Link className="MailLink" to="/chat">
+        <Link className="MailLink" to="/inbox">
           <i className="bx bxs-envelope"></i>
         </Link>
 

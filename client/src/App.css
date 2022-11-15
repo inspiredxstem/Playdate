@@ -359,24 +359,47 @@ h1 {
 }
 
 .profile-cont {
-  padding: 25px 40px 25px 40px;
+  padding: 25px 50px;
   margin: 50px 0 80px 0;
   background-color: var(--wht);
   color: var(--blk);
-  height: 69vh;
-  width: 90vh;
+  height: 60vh;
+  width: 80vh;
   border-radius: 10px;
 }
 
 .profile-title {
   font-family: "Futura", sans-serif;
   font-size: 30px;
+  font-weight: 900;
   color: var(--grey-2);
-  margin-bottom: 60px;
 }
 
 .profile-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 5px 40px;
+}
+
+.profile-subtitle {
+  font-family: "Futura", sans-serif;
+  font-size: 20px;
+  color: var(--grey-1);
+  margin: 40px 0 10px 0;
+}
+
+.profile-category {
+  /* font-weight: 600; */
+  color: var(--blk);
+  margin-bottom: 7px;
+}
+
+.profile-values {
+  margin-bottom: 7px;
+}
+
+.line {
+  width: 80vh;
+  border: 0.5px solid var(--grey-1);
+  margin-top: 30px;
 }
