@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
     end
 
     def decoded_token
-        header = request.headers['Authentication']
+        header = request.headers['Authorization']
         if header
             token = header.split(" ")[1]
             begin
@@ -27,6 +27,7 @@ class ApplicationController < ActionController::API
             @user = User.find_by(id: user_id)
         end
     end
+    
 
     def authorize 
         render json: { error: 'Please log in' } , status: :unauthorized unless !!current_user
