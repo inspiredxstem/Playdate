@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
-  post "/users", to: "users#create"
+  post "/login", to: "users#login"
   get "/me", to: "users#me"
-  post "/auth/login", to: "auth#login"
+  post "/users", to: "users#create"
+
+  # resources :users
+  resources :messages, only: [:create, :update]
+  resources :conversations, only: [:index, :show, :create]
+
+  mount ActionCable.server => '/cable'
 end
