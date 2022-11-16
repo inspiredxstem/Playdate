@@ -5,6 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Pets from "./Pets";
 import Inbox from "./Inbox";
+import Chatbox from "./Chatbox";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 import axios from "axios";
@@ -40,6 +41,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/pets" element={<Pets users={users} />} />
         <Route path="/inbox" element={<Inbox />} />
+        <Route path="/inbox/:id" element={<Chatbox />} />
         <Route path="/me" element={<Profile current={currentUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

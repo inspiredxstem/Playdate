@@ -9,9 +9,33 @@ class User < ApplicationRecord
     has_many :messages
 
     validates :username, presence: true, uniqueness: true
-    validates :password, presence: true
+    validates :profile_pic, presence: true
 
     def self.all_except(user)
         where.not(id: user)
+    end
+
+    def get_conversations
+        conversations = []
+
+        self.convos_a.each do |convo|
+            info = {
+                convo: convo,
+                user_a_username: User.find(convo.user_a_id).username,
+                user_b_username: User.find(convo.user_b_id).username
+            }
+            conversations << info
+        end
+        
+        self.convos_b.each do |convo|
+            info = {
+                convo: convo,
+                user_a_username: User.find(convo.user_a_id).username,
+                user_b_username: User.find(convo.user_b_id).username
+            }
+            conversations << info
+        end
+
+        conversations
     end
 end
