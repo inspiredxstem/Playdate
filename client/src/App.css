@@ -25,10 +25,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 /*  */
 
 .landing-container {
@@ -359,47 +355,112 @@ h1 {
 }
 
 .profile-cont {
-  padding: 25px 50px;
-  margin: 50px 0 80px 0;
+  padding: 40px 50px 25px;
+  margin: 0px 60px;
   background-color: var(--wht);
   color: var(--blk);
-  height: 60vh;
-  width: 80vh;
+  height: min-content;
+  width: 580px;
   border-radius: 10px;
+  /* box-shadow: -1px 1px #000, -2px 2px #000, -3px 3px #000, -4px 4px #000,
+  -5px 5px #000, -6px 6px #000, -7px 7px #000, -8px 8px #000; */
 }
 
 .profile-title {
-  font-family: "Futura", sans-serif;
-  font-size: 30px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 27px;
   font-weight: 900;
-  color: var(--grey-2);
+  color: var(--wht);
+  margin: 5.5vh 60px 10px;
+  /* text-align: center; */
 }
 
 .profile-info {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 5px 40px;
+  margin: 0 45px;
+  align-items: center;
+}
+
+.form-info {
+  display: grid;
+  grid-template-columns: 250px 210px 40px;
+  margin: 0 45px;
+  align-items: center;
 }
 
 .profile-subtitle {
-  font-family: "Futura", sans-serif;
-  font-size: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 15px;
   color: var(--grey-1);
-  margin: 40px 0 10px 0;
+  font-weight: 500;
+  margin: 0 0 9px 0;
+  cursor: default;
 }
 
 .profile-category {
-  /* font-weight: 600; */
-  color: var(--blk);
-  margin-bottom: 7px;
+  color: var(--grey-2);
+  margin: 5px;
+  font-size: 17px;
+  font-family: "Futura", sans-serif;
 }
 
 .profile-values {
-  margin-bottom: 7px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  margin: 0 0 1px 2px;
 }
 
 .line {
-  width: 80vh;
-  border: 0.5px solid var(--grey-1);
-  margin-top: 30px;
+  width: 80%;
+  border: 0px solid var(--gwht);
+  margin-bottom: 40px;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 30px 35px 20px;
+}
+
+.deactivate {
+  background-color: var(--cerise-1);
+}
+
+#edit-button {
+  font-size: 20px;
+  color: var(--grey-0);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#edit-button:hover {
+  color: var(--grey-2);
+}
+
+#edit-account {
+  background-color: var(--wht);
+  outline: none;
+  border: none;
+  border-bottom: var(--grey-0) 0.5px solid;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  margin: 0 30px 0 0;
+}
+
+#edit-form-submit {
+  border: none;
+  background-color: var(--green-1);
+  color: var(--wht);
+  cursor: pointer;
+  transition: 0.4s;
+  margin: 0;
+  padding: 0px;
+}
+
+#edit-form-submit:hover {
+  transform: none;
+  background-color: var(--green-2);
 }

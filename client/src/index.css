@@ -1,15 +1,16 @@
 :root {
   /* --cerise-0: ; */
-  --cerise-1: #d73a56;
-  /* --cerise-2: ; */
+  --cerise-1: #D73A47;
+  --cerise-2: #D72B4A;
   /* --blue-0: ;  */
-  --blue-1: #15298C;
+  --blue-1: #2C3C8C;
   /* --blue-2: ;  */
   /* --green-0: ;  */
   --green-1: #57b583;
-  /* --green-2: ;  */
+  --green-2: #428963; 
   --wht: #fcfcfc;
   --grey-0: #b3b1b3;
+  --grey-3: #9A989A;
   --grey-1: #807f80;
   --grey-2: #4d4c4d;
   --blk: #1a1a1a;

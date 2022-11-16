@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { createConsumer } from "@rails/actioncable";
@@ -6,12 +6,12 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-function Chatbox() {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-  const params = useParams();
-  console.log(params.id)
-  const cable = useRef();
+function Chat() {
+  // const [messages, setMessages] = useState([]);
+  // const [newMessage, setNewMessage] = useState("");
+  // const params = useParams();
+  // console.log(params.id)
+  // const cable = useRef();
 
   // useEffect(() => {
   //   if (!cable.current) {
@@ -50,11 +50,11 @@ function Chatbox() {
     <div>
       <Navbar />
       <div>
-        <h1>Chatbox</h1>
+        <h1>Chat</h1>
       </div>
       <Footer />
     </div>
   );
 }
 
-export default Chatbox;
+export default Chat;

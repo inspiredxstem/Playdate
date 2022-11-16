@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className="navbar sticky">
       <Link to="/">
-        <img src="playdate-wide-trans.png" className="nav-logo" alt="logo" />
+        <img src="/playdate-wide-trans.png" className="nav-logo" alt="logo" />
       </Link>
       <nav className="links">
         <Link className="MailLink" to="/inbox">

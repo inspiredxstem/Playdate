@@ -5,7 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Pets from "./Pets";
 import Inbox from "./Inbox";
-import Chatbox from "./Chatbox";
+import Chat from "./Chat";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 import axios from "axios";
@@ -20,18 +20,16 @@ function App() {
         headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` },
       })
       .then((res) => {
+        console.log(res.data);
         setUsers(res.data);
-        // console.log(data);
       });
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:3000/me")
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrentUser(data);
-        // console.log(data);
-      });
+    axios.get("http://localhost:3000/me").then((res) => {
+      console.log(res.data);
+      setCurrentUser(res.data);
+    });
   }, []);
 
   return (
@@ -41,8 +39,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/pets" element={<Pets users={users} />} />
         <Route path="/inbox" element={<Inbox />} />
-        <Route path="/inbox/:id" element={<Chatbox />} />
-        <Route path="/me" element={<Profile current={currentUser} />} />
+        <Route path="/inbox/:id" element={<Chat />} />
+        <Route path="/me" element={<Profile users={users} current={currentUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

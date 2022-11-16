@@ -17,7 +17,6 @@ function PetCards({ users }) {
             </div>
             <div>
               <Link className="chat-link" to={`/inbox/${users.id}`}>
-                {/* Will change the chat link when I have the messaging components up and running */}
                 <i className="bx bxs-envelope"></i>
               </Link>
             </div>

@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  function handleLogin(e) {
     e.preventDefault();
     axios
       .post("http://localhost:3000/login", { username, password })
@@ -43,7 +43,7 @@ function Login() {
       <div className="login-cont">
         <div className="log-form">
           <h2>Welcome back!</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <input
               type="text"
               title="username"
