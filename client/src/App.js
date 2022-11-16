@@ -6,10 +6,13 @@ import Pets from "./Pets";
 import Chat from "./Chat";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
+import NavBar from './Navbar'
+import Footer from './Footer'
 
 function App() {
   return (
     <div>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -18,6 +21,7 @@ function App() {
         <Route path="/me" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

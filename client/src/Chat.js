@@ -5,11 +5,11 @@ import Footer from "./Footer";
 function Chat() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div>
         <h1>Chat</h1>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

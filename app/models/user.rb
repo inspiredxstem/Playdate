@@ -11,4 +11,8 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :profile_pic, presence: true
 
+    # scope :all_except, ->(user) {where.not(id: user)} 
+    def self.all_except(user)
+        where.not(id: user)
+    end
 end

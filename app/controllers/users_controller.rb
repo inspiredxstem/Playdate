@@ -21,6 +21,10 @@ class UsersController < ApplicationController
         render json: current_user, status: :ok
     end
 
+    def index
+        render json: User.all_except(current_user), status: :ok
+    end
+
     private
 
     def user_params
