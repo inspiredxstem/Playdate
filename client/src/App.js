@@ -45,7 +45,7 @@ function App() {
 
       <Router>
         <Route exact path='/'>
-          <Chat />
+          {/* <Chat /> */}
         </Route>
       </Router>
     </>
