@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :login, :index, :me]
+    skip_before_action :authorize, only: [:create, :login,  :me]
     # Will remove :index and :me skips later, just for testing
     
     def index
-        users = User.all
+        users = User.all_except(current_user)
         render json: users
         # Going to add pet_params to this later
     end
@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     def me
         render json: current_user, status: :ok
     end
+
 
     private
 

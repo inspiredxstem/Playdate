@@ -7,16 +7,19 @@ import Pets from "./Pets";
 import Inbox from "./Inbox";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
+import axios from "axios";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
+    axios
+      .get("http://localhost:3000/users", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` },
+      })
+      .then((res) => {
+        setUsers(res.data);
         // console.log(data);
       });
   }, []);

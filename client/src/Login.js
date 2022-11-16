@@ -16,6 +16,7 @@ function Login() {
       .post("http://localhost:3000/login", { username, password })
       .then((r) => {
         console.log(r.data);
+        localStorage.setItem('jwt', r.data.token);
         navigate("/pets");
       })
       .catch(function (error) {

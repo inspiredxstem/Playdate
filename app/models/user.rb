@@ -11,4 +11,7 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :password, presence: true
 
+    def self.all_except(user)
+        where.not(id: user)
+    end
 end
