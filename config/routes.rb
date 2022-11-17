@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/me", to: "users#me"
   post "/users", to: "users#create"
   get "/users", to: "users#index"
+  delete "/users/:id", to: "users#destroy"
+  patch "/users/:id", to: "users#update"
 
   # resources :users
   resources :messages, only: [:create, :update]

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :login, :me]
-    # Will remove :me skip later, just for testing
+    skip_before_action :authorize, only: [:create, :login, :destroy, :update]
+    # Will remove :destroy and :update skip later, just for testing
     
     def index
         users = User.all_except(current_user)
@@ -26,6 +26,18 @@ class UsersController < ApplicationController
 
     def me
         render json: current_user, status: :ok
+    end
+
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        head :no_content
+    end
+
+    def update
+        user = User.find(params[:id])
+        user.update(user_params)
+        render json: user
     end
 
 

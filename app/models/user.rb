@@ -9,7 +9,9 @@ class User < ApplicationRecord
     has_many :messages
 
     validates :username, presence: true, uniqueness: true
-    validates :profile_pic, presence: true
+    validates :password, presence: true
+    # validates :profile_pic, presence: true
+    # commented the above out because new users don't have a profile pic yet
 
     def self.all_except(user)
         where.not(id: user)

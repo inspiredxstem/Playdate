@@ -8,26 +8,18 @@ function Register() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  //   const handleRegister = (e) => {
-  //     fetch("http://localhost:3000/users", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: username,
-  //         password: password,
-  //       }),
-  //     });
-  //   };
-
   function handleRegister(e) {
     e.preventDefault();
     axios
       .post("http://localhost:3000/users", { username, password })
       .then((r) => {
-        console.log(r.data);
-        navigate("/pets");
+        const loggedInUser = r.data;
+        localStorage.setItem("jwt", loggedInUser.token);
+        localStorage.setItem("current_user", JSON.stringify(loggedInUser));
+        const current_user = ("current_user", loggedInUser.user);
+        // setCurrentUser(current_user);
+        console.log(`Welcome, @${current_user.username}!`);
+        navigate("/me");
       })
       .catch(function (error) {
         if (error.response) {
@@ -48,7 +40,7 @@ function Register() {
   }
 
   return (
-    <div className="reg-form">
+    <div>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -65,14 +57,6 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">REGISTER</button>
-        <div className="p-container">
-          <p>Have an account?</p>
-          <p>
-            <a href="/login" className="dark-link">
-              Login
-            </a>
-          </p>
-        </div>
       </form>
     </div>
   );

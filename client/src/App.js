@@ -12,7 +12,6 @@ import axios from "axios";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState([]);
 
   useEffect(() => {
     axios
@@ -25,12 +24,12 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    axios.get("http://localhost:3000/me").then((res) => {
-      console.log(res.data);
-      setCurrentUser(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:3000/me").then((res) => {
+  //     console.log(res.data);
+  //     setCurrentUser(res.data);
+  //   });
+  // }, []);
 
   return (
     <div>
@@ -40,7 +39,7 @@ function App() {
         <Route path="/pets" element={<Pets users={users} />} />
         <Route path="/inbox" element={<Inbox />} />
         <Route path="/inbox/:id" element={<Chat />} />
-        <Route path="/me" element={<Profile users={users} current={currentUser} />} />
+        <Route path="/me" element={<Profile users={users} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

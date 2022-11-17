@@ -51,8 +51,8 @@
 }
 
 .landing-body {
-  width: 460px;
-  padding-top: 20px;
+  width: 325px;
+  padding-top: 30px;
   font-size: 1.25rem;
   line-height: 30px;
   text-align: left;
@@ -61,7 +61,7 @@
 
 .reg-form {
   display: flex;
-  margin: 100px 70px;
+  margin: 80px 70px;
   padding: 10px;
   flex-direction: column;
   justify-content: center;
@@ -78,10 +78,11 @@
 input {
   outline: none;
   border: none;
-  border-bottom: var(--blk) 2px solid;
+  border-bottom: var(--blk) 1px solid;
   font-family: "Futura", sans-serif;
   font-size: 16px;
   margin: 5px;
+  background-color: var(--wht);
 }
 
 button {
@@ -111,6 +112,16 @@ p {
 .dark-link {
   color: black;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.show-line {
+  font-size: 15px;
+  color: var(--grey-1);
+  font-weight: 500;
+  cursor: default;
+  font-family: "Futura", sans-serif;
+  border-bottom: 0.75px solid var(--grey-0);
 }
 
 .p-container {
@@ -118,7 +129,7 @@ p {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 55px 0px;
+  margin: 20px 50px 0px;
 }
 
 .navbar {
@@ -132,6 +143,7 @@ p {
   left: 0;
   top: 0;
   padding-top: 10px;
+  margin-bottom: 3.5vh;
 }
 
 .links {
@@ -204,9 +216,9 @@ footer {
   color: var(--wht);
   font-family: "Futura", sans-serif;
   font-size: 11px;
-  padding-top: 10px;
+  /* padding-top: 10px; */
   padding-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
   left: 0;
   bottom: 0;
@@ -275,6 +287,7 @@ h1 {
 .feed-container {
   display: grid;
   justify-content: center;
+  /* margin-bottom: 50vh; */
 }
 
 .pet-feed {
@@ -287,7 +300,7 @@ h1 {
 
 .card {
   position: relative;
-  margin: 40px;
+  margin: 30px 40px;
   margin-bottom: 0;
   background-color: var(--wht);
   color: var(--blk);
@@ -355,24 +368,27 @@ h1 {
 }
 
 .profile-cont {
-  padding: 40px 50px 25px;
+  padding: 20px 40px 15px 40px;
   margin: 0px 60px;
   background-color: var(--wht);
   color: var(--blk);
   height: min-content;
-  width: 580px;
+  width: 560px;
   border-radius: 10px;
   /* box-shadow: -1px 1px #000, -2px 2px #000, -3px 3px #000, -4px 4px #000,
   -5px 5px #000, -6px 6px #000, -7px 7px #000, -8px 8px #000; */
 }
 
 .profile-title {
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 27px;
+  /* font-family: "Helvetica Neue", sans-serif; */
+  font-family: "Futura", sans-serif;
+  font-size: 24px;
   font-weight: 900;
-  color: var(--wht);
-  margin: 5.5vh 60px 10px;
-  /* text-align: center; */
+  color: var(--blk);
+  margin: 0px 0px 5vh 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile-info {
@@ -382,56 +398,53 @@ h1 {
   align-items: center;
 }
 
-.form-info {
-  display: grid;
-  grid-template-columns: 250px 210px 40px;
-  margin: 0 45px;
-  align-items: center;
-}
-
 .profile-subtitle {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   font-size: 15px;
   color: var(--grey-1);
   font-weight: 500;
-  margin: 0 0 9px 0;
   cursor: default;
+  font-family: "Futura", sans-serif;
+  /* width: 200px; */
+  border-bottom: 0.75px solid var(--grey-0);
+  margin: 0 0 20px 0;
 }
 
 .profile-category {
   color: var(--grey-2);
-  margin: 5px;
+  margin: 8px;
   font-size: 17px;
-  font-family: "Futura", sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  /* font-family: "Futura", sans-serif; */
 }
 
 .profile-values {
   font-family: "Helvetica Neue", sans-serif;
+  /* font-family: "Futura", sans-serif; */
   font-size: 16px;
-  margin: 0 0 1px 2px;
+  margin: 6px;
+  /* font-weight: 500; */
 }
 
 .line {
   width: 80%;
-  border: 0px solid var(--gwht);
-  margin-bottom: 40px;
+  border: 0px solid var(--wht);
+  margin-bottom: 30px;
 }
 
 .profile-buttons {
   display: flex;
   justify-content: space-evenly;
-  margin: 30px 35px 20px;
+  margin: 10px 35px 20px;
 }
 
 .deactivate {
   background-color: var(--cerise-1);
 }
 
+
 #edit-button {
-  font-size: 20px;
-  color: var(--grey-0);
+  color: var(--grey-3);
   transition: 0.3s;
   cursor: pointer;
 }
@@ -440,27 +453,36 @@ h1 {
   color: var(--grey-2);
 }
 
-#edit-account {
+/* #edit-account {
   background-color: var(--wht);
   outline: none;
   border: none;
   border-bottom: var(--grey-0) 0.5px solid;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 16px;
-  margin: 0 30px 0 0;
-}
+  margin: 60px 30px 8px;
+} */
 
 #edit-form-submit {
-  border: none;
   background-color: var(--green-1);
-  color: var(--wht);
-  cursor: pointer;
-  transition: 0.4s;
-  margin: 0;
-  padding: 0px;
+  width: fit-content;
 }
 
 #edit-form-submit:hover {
   transform: none;
   background-color: var(--green-2);
+}
+
+.submit-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vh;
+}
+
+.pfp-preview {
+  height: 120px;
+  width: 120px;
+  border-radius: 20%;
+  object-fit: cover;
+  margin: 10px 0;
 }
