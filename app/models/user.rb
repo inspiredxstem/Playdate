@@ -22,7 +22,8 @@ class User < ApplicationRecord
             info = {
                 convo: convo,
                 user_a_username: User.find(convo.user_a_id).username,
-                user_b_username: User.find(convo.user_b_id).username
+                user_b_username: User.find(convo.user_b_id).username,
+                unread_messages: convo.messages.where(read: 0)
             }
             conversations << info
         end

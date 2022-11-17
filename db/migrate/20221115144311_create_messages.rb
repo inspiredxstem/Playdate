@@ -5,7 +5,7 @@ class CreateMessages < ActiveRecord::Migration[7.0]
       t.text :msgbody
       t.integer :conversation_id
       t.integer :user_id
-      t.boolean :read
+      t.integer :read
 
       t.timestamps
     end

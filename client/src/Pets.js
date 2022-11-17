@@ -15,14 +15,6 @@ function Pets({currentUser, userInbox, setUserInbox}) {
       .then((res) => {
         setUsers(res.data);
       });
-
-    // axios
-    // .get("http://localhost:3000/me", {
-    //   headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` }
-    // })
-    //   .then((res) => {
-    //     setCurrentUser(res.data);
-    //   });
   }, []);
 
   const petsDisplay = Array.from(users).map((users) => (

@@ -7,44 +7,41 @@ import './index.css'
 
 function PetCards({ users, currentUser, userInbox, setUserInbox }) {
   const navigate = useNavigate()
+  const curUser = JSON.parse(localStorage.getItem("user"))
+
   
   function handleClick(user){
+    console.log(`This is User: ${curUser.id}`)
     const convoExist = userInbox.find((conversation) => {
-      if(conversation.convo.user_a_id === currentUser.id && conversation.convo.user_b_id === user.id){
+      if(conversation.convo.user_a_id === curUser.id && conversation.convo.user_b_id === user.id){
         return conversation
-      } else if(conversation.convo.user_b_id === currentUser.id && conversation.convo.user_a_id === user.id){
+      }  else if(conversation.convo.user_b_id === curUser.id && conversation.convo.user_a_id === user.id){
         return conversation
       } else {
         return;
       }
     })
-
     if(convoExist){
       console.log("It worked")
-      navigate(`/inbox/${users.id}`)
+      navigate(`/inbox/${user.id}`)
     } else {
       console.log("It does not work")
-      axios.post("http://localhost:3000/conversations", { user_a_id: currentUser.id, user_b_id: user.id} )
+      axios.post("http://localhost:3000/conversations", { user_a_id: curUser.id, user_b_id: user.id}, {headers : { Authorization: `Bearer ${localStorage.getItem("jwt")}`}} )
       .then(res => {
         console.log(res.data) 
         const convoData = {
               convo: res.data,
-              user_a_username: currentUser.username,
+              user_a_username: curUser.username,
               user_b_username: user.username
             }
             setUserInbox([...userInbox, convoData])
+            navigate(`/inbox/${res.data.id}`)
       }).catch(function (error) {
           if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
             console.log(error.response.data);
           } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
             console.log(error.request);
           } else {
-            // Something happened in setting up the request that triggered an Error
             console.log("Error", error.message);
           }
         })

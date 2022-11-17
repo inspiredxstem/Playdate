@@ -15,7 +15,6 @@ function Chatbox({users, currentUser}) {
   const params = useParams()
 
   const curUser = JSON.parse(localStorage.getItem("user"))
-  console.log(curUser)
   const cable = useRef()
 
   useEffect(() => {
@@ -23,11 +22,9 @@ function Chatbox({users, currentUser}) {
     axios.get(`http://localhost:3000/conversations/${params.id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
     .then(res => {
       if(res.data.user_a_id === curUser.id){
-        console.log(`Hey ${res.data.user_b.username}`)
-        // setRecipientUser(data.user_b.username)
+        setRecipientUser(res.data.user_b.username)
       } else {
-        console.log(`Hello ${res.data.user_a.username}`)
-        // setRecipientUser(data.user_a.username)
+        setRecipientUser(res.data.user_a.username)
       }
       setMessages(res.data.messages)
       setLoadMessages(true)
@@ -51,7 +48,7 @@ function Chatbox({users, currentUser}) {
             const pkg = {
               id: data.message.id,
               msgbody: data.message.msgbody,
-              read: true,
+              read: 1,
               user_id: data.message.user_id, 
               conversation_id: data.message.conversation_id
               // current_user_username: data.user_username
@@ -61,7 +58,7 @@ function Chatbox({users, currentUser}) {
             const pkg = {
               id: data.message.id,
               msgbody: data.message.msgbody,
-              read: false,
+              read: 0,
               user_id: data.message.user_id, 
               conversation_id: data.message.conversation_id
               // current_user_username: data.user_username
@@ -106,7 +103,6 @@ function Chatbox({users, currentUser}) {
       }
     })
 
-    console.log(messagesReversed)
     const handleSubmit = (e) => {
       e.preventDefault()
       console.log(`Help ${JSON.parse(JSON.stringify(messagesReversed))}`)
@@ -115,7 +111,7 @@ function Chatbox({users, currentUser}) {
           msgbody: newMessage,
           conversation_id: params.id,
           user_id: curUser.id,
-          read: false
+          read: 1
         }
         console.log(data)
         setNewMessage("")
@@ -133,19 +129,17 @@ function Chatbox({users, currentUser}) {
           })
         })
         .then(res => {
+          res.json()
           console.log(res)
+        })
+        .then(data => {
+          console.log(data)
         }).catch(function (error) {
           if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
             console.log(error.response.data);
           } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
             console.log(error.request);
           } else {
-            // Something happened in setting up the request that triggered an Error
             console.log("Error", error.message);
           }
         })
@@ -155,7 +149,7 @@ function Chatbox({users, currentUser}) {
     return (
       <div>
         <Navbar />
-        {/* <div className="conv-page-container chat-page">
+        {/* <div>
           <h1>Chatbox</h1>
         </div> */}
   

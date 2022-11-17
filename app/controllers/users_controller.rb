@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authorize, only:[:index, :me]
+    before_action :authorize, only:[:me]
     # Will remove :index and :me skips later, just for testing
     
     def index
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     end
 
     def me
+        # @user = User.find_by!()
         render json: current_user, status: :ok
     end
 

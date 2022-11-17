@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <div className="navbar sticky">
-      <Link to="/">
+      <Link to="/pets">
         <img src="playdate-wide-trans.png" className="nav-logo" alt="logo" />
       </Link>
       <nav className="links">
