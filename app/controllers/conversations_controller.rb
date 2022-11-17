@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-    before_action :authorize, only: [:create]
+    # before_action :authorize, only: [:create]
 
     def index
         @conversations = Conversation.all
@@ -12,13 +12,12 @@ class ConversationsController < ApplicationController
     end
 
     def create
-        @conversation = Conversation.new(conversation_params)
+        @conversation = Conversation.create!(conversation_params)
 
-        if @conversation.valid?
-            @conversation.save
+        if @conversation
             render json: @conversation
         else
-            render json: {error: "Invalid request"}
+            render json: {error: "Invalid request!"}
         end
     end
 

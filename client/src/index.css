@@ -33,3 +33,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+/* ------------------------------- */
+.conv-page-container {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.chat-page {
+  padding-top: 0px;
+  height: 60em;
+}
+
+.black {
+  background-color: black;
+}

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
-    before_action :authorize
+    # before_action :authorize
 
     # takes payload as argument, in this case: the user.id
     def encode_token(payload)
@@ -28,9 +28,12 @@ class ApplicationController < ActionController::API
         end
     end
     
+    def logged_in?
+        !!current_user
+    end
 
     def authorize 
-        render json: { error: 'Please log in' } , status: :unauthorized unless !!current_user
+        render json: { error: 'Please log in' } , status: :unauthorized unless logged_in?
     end
 
     private

@@ -403,3 +403,39 @@ h1 {
   border: 0.5px solid var(--grey-1);
   margin-top: 30px;
 }
+
+
+/* ------------------------------- */
+.conv-page-container {
+  background-color: green;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.conv-page-content {
+  height: auto;
+  background-color: white;
+  margin-left: 12%;
+  margin-right: 13%;
+  padding: 3%;
+  min-width: 1000px;
+}
+
+.chat-page {
+  padding-top: 0px;
+  height: 60em;
+}
+
+.message-container{
+  padding-top: 30px;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  height: 85%;
+  overflow: auto
+}

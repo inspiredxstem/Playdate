@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :login,  :me]
+    before_action :authorize, only:[:index, :me]
     # Will remove :index and :me skips later, just for testing
     
     def index

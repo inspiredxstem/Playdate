@@ -11,38 +11,37 @@ import NotFound from "./NotFound";
 import axios from "axios";
 
 function App() {
-  const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [userInbox, setUserInbox] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/users", {
-        headers: { Authorization: `Bearer ${localStorage.getItem("jwt")}` },
-      })
-      .then((res) => {
-        setUsers(res.data);
-        // console.log(data);
-      });
-  }, []);
+  function handleCurrentUser(user) {
+    setCurrentUser(user)
+    setUserInbox([...user.get_conversations])
+  }
 
-  useEffect(() => {
-    fetch("http://localhost:3000/me")
-      .then((res) => res.json())
-      .then((data) => {
-        setCurrentUser(data);
-        // console.log(data);
-      });
-  }, []);
+  useEffect(()=>{
+    if(localStorage.getItem('jwt')){  
+      axios
+        .get("http://localhost:3000/me", { headers: { Authorization:localStorage.getItem("jwt")}})
+        .then(res => {
+          setCurrentUser(res.data)
+          setUserInbox([...res.data.get_conversations])
+        })
+      }
+    },[])
+    
+    // console.log(userInbox)
+    console.log(currentUser)
 
   return (
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/pets" element={<Pets users={users} />} />
+        <Route path="/login" element={<Login handleCurrentUser={handleCurrentUser}/>} />
+        <Route path="/pets" element={<Pets currentUser={currentUser} userInbox={userInbox} setUserInbox={setUserInbox}/>} />
         <Route path="/inbox" element={<Inbox />} />
-        <Route path="/inbox/:id" element={<Chatbox />} />
-        <Route path="/me" element={<Profile current={currentUser} />} />
+        <Route path="/inbox/:id" element={<Chatbox currentUser={currentUser}/>} />
+        {/* <Route path="/me" element={<Profile current={currentUser} />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
