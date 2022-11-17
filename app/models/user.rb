@@ -9,7 +9,7 @@ class User < ApplicationRecord
     has_many :messages
 
     validates :username, presence: true, uniqueness: true
-    validates :profile_pic, presence: true
+    # validates :profile_pic, presence: true
 
     def self.all_except(user)
         where.not(id: user)
@@ -23,7 +23,7 @@ class User < ApplicationRecord
                 convo: convo,
                 user_a_username: User.find(convo.user_a_id).username,
                 user_b_username: User.find(convo.user_b_id).username,
-                unread_messages: convo.messages.where(read: 0)
+                unread_messages: convo.messages.where(read: false)
             }
             conversations << info
         end
@@ -32,7 +32,9 @@ class User < ApplicationRecord
             info = {
                 convo: convo,
                 user_a_username: User.find(convo.user_a_id).username,
-                user_b_username: User.find(convo.user_b_id).username
+                user_b_username: User.find(convo.user_b_id).username,
+                unread_messages: convo.messages.where(read: false)
+
             }
             conversations << info
         end

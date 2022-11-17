@@ -19,15 +19,16 @@ function App() {
     setCurrentUser(user)
     setUserInbox([...user.get_conversations])
 
-    const allUnreadMessages = []
-    user.get_conversations.forEach(conversation => {
-      conversation.convo.unread_messages(message => {
-        if(message.user_id !== user.id){
-          allUnreadMessages.push(message)
-        }
-      })
-    })
-    setUnreadMessages([...allUnreadMessages])
+    // const allUnreadMessages = []
+    // user?.get_conversations.forEach(conversation => {
+    //   conversation.convo?.unread_messages(message => {
+    //     if(message.user_id !== user.id){
+    //       allUnreadMessages.push(message)
+    //     }
+    //   })
+    // })
+    // setUnreadMessages([...allUnreadMessages])
+    console.log(user)
   }
 
   useEffect(()=>{

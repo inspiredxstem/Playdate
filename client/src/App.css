@@ -439,3 +439,29 @@ h1 {
   height: 85%;
   overflow: auto
 }
+
+.sentMsg { 
+  align-self: flex-end;
+}
+
+.sentMsg-temp {
+  height: fit-content;
+  background-color: yellow;
+  border-radius: 30px;
+  padding: 20px;
+  font-size: 20px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.receivedMsg {
+  align-self: flex-start;
+}
+
+.receivedMsg-temp {
+  height: fit-content;
+  background-color: red;
+  border-radius: 30px;
+  padding: 20px;
+  font-size: 20px;
+  font-family: 'Prompt', sans-serif;
+}

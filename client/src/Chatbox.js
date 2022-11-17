@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router"
-import { NavLink } from "react-router-dom"
 import { createConsumer } from "@rails/actioncable"
 import axios from 'axios'
 
@@ -31,73 +30,73 @@ function Chatbox({users, currentUser}) {
     })
   }, [params.id, curUser.id])
 
-  useEffect(()=>{
-    /* --------------Connection with Action Cable Channels-------------- */
-    if(!cable.current){
-        cable.current = createConsumer("ws://localhost:3000/cable")
+  useEffect(() => {
+    if (!cable.current) {
+        cable.current = createConsumer("http://localhost:3000/cable")
     }
-
     const paramsToSend = {
         channel: "ConversationChannel",
         id: params.id
     }
-
     const handlers = {
-        recevied(data){
-          if(data.message.user_id !== curUser.id){
-            const pkg = {
-              id: data.message.id,
-              msgbody: data.message.msgbody,
-              read: 1,
-              user_id: data.message.user_id, 
-              conversation_id: data.message.conversation_id
-              // current_user_username: data.user_username
+        received(data) {
+            if (data.message.user_id !== curUser.id) {
+              console.log('in the head')
+                const pkg = {
+                    msgbody: data.message.msgbody,
+                    conversation_id: data.message.conversation_id,
+                    id: data.message.id,
+                    user_id: data.message.user_id
+                }
+                setMessages([...messages, pkg])
+            } else {
+              console.log(data)
+                const pkg = {
+                    msgbody: data.message.msgbody,
+                    conversation_id: data.message.conversation_id,
+                    id: data.message.id,
+                    user_id: data.message.user_id,
+                }
+                setMessages([...messages, pkg])
             }
-            setMessages([...messages, pkg])
-          } else {
-            const pkg = {
-              id: data.message.id,
-              msgbody: data.message.msgbody,
-              read: 0,
-              user_id: data.message.user_id, 
-              conversation_id: data.message.conversation_id
-              // current_user_username: data.user_username
-            }
-            setMessages([...messages, pkg])
-          }
         },
-        connected(){
-            console.log("Connected")
+        connected() {
+            console.log("connected")
         },
-        disconnected(){
-            console.log("Disconnected")
+        disconnected() {
+            console.log("disconnected")
             cable.current = null
         }
     }
-
+    console.log("subbing to ", params.id)
     const subscription = cable.current.subscriptions.create(paramsToSend, handlers)
 
-    return function cleanup(){
-        console.log("unsubbing from", params.id)
+    return function cleanup() {
+        console.log("unsubbing from ", params.id)
         cable.current = null
         subscription.unsubscribe()
     }
-  },[params.id, messages, curUser.id])
+}, [params.id, messages, curUser.id])
 
   if(loadMessages){
+    
     const messagesReversed = [...messages].reverse()
-
+    
     const renderMessages = messagesReversed.map((msg)=>{
       if(msg.user_id === curUser.id){
         return(
           <div className="sentMsg" key={msg.id}>
-            <p>{msg.msgbody}</p>
+            <div className="sentMsg-temp">
+              <p>{msg.msgbody}</p>
+            </div>
           </div>
         )
       } else {
         return(
           <div className="receivedMsg" key={msg.id}>
-            <p>{msg.msgbody}</p>
+            <div className="receivedMsg-temp">
+              <p>{msg.msgbody}</p>
+            </div>
           </div>
         )
       }
@@ -105,15 +104,12 @@ function Chatbox({users, currentUser}) {
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log(`Help ${JSON.parse(JSON.stringify(messagesReversed))}`)
       if(newMessage !== ""){
         const data = {
           msgbody: newMessage,
           conversation_id: params.id,
-          user_id: curUser.id,
-          read: 1
+          user_id: curUser.id
         }
-        console.log(data)
         setNewMessage("")
   
         fetch("http://localhost:3000/messages", {
@@ -122,19 +118,9 @@ function Chatbox({users, currentUser}) {
             "content-type" : "application/json",
             "Authorization" : `Bearer ${localStorage.getItem("jwt")}`
           },
-          body: JSON.stringify({
-            msgbody: newMessage,
-            conversation_id: params.id,
-            user_id: curUser.id 
-          })
+          body: JSON.stringify(data)
         })
-        .then(res => {
-          res.json()
-          console.log(res)
-        })
-        .then(data => {
-          console.log(data)
-        }).catch(function (error) {
+        .catch(function (error) {
           if (error.response) {
             console.log(error.response.data);
           } else if (error.request) {

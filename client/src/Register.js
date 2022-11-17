@@ -8,25 +8,13 @@ function Register() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  //   const handleRegister = (e) => {
-  //     fetch("http://localhost:3000/users", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: username,
-  //         password: password,
-  //       }),
-  //     });
-  //   };
-
   function handleRegister(e) {
     e.preventDefault();
     axios
       .post("http://localhost:3000/users", { username, password })
       .then((r) => {
-        console.log(r.data);
+        localStorage.setItem('jwt', r.data.token)
+        localStorage.setItem("user", JSON.stringify(r.data.user))
         navigate("/pets");
       })
       .catch(function (error) {

@@ -9,6 +9,13 @@ function PetCards({ users, currentUser, userInbox, setUserInbox }) {
   const navigate = useNavigate()
   const curUser = JSON.parse(localStorage.getItem("user"))
 
+  // const findConvoId = curUser.get_conversations.forEach(conversation => {
+  //   conversation.convo.find(con => {
+  //     if(conversation.convo.user_b_id === curUser.id){
+  //       return conversation.convo.id
+  //     }})
+  //   })
+  // console.log(findConvoId)
   
   function handleClick(user){
     console.log(`This is User: ${curUser.id}`)
@@ -21,9 +28,10 @@ function PetCards({ users, currentUser, userInbox, setUserInbox }) {
         return;
       }
     })
+    console.log(user)
     if(convoExist){
       console.log("It worked")
-      navigate(`/inbox/${user.id}`)
+      navigate(`/inbox/${convoExist.convo.id}`)
     } else {
       console.log("It does not work")
       axios.post("http://localhost:3000/conversations", { user_a_id: curUser.id, user_b_id: user.id}, {headers : { Authorization: `Bearer ${localStorage.getItem("jwt")}`}} )
