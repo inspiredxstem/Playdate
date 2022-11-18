@@ -19,7 +19,7 @@ function Inbox({ userInbox, unreadMessages }) {
           >
             <div>
               <p>
-                Conversation with <span>{conversation.user_b_username}</span>
+                Conversation with <span>{conversation.user_a_username}</span>
               </p>
             </div>
           </NavLink>
@@ -31,15 +31,13 @@ function Inbox({ userInbox, unreadMessages }) {
             key={conversation.convo.id}
           >
             <div>
-              <span>
-                {filterMsgs.length}
-              </span>
+              <span>{filterMsgs.length}</span>
               <p>
-                Conversation with <span>{conversation.user_b_username}</span>
+                Conversation with <span>{conversation.user_a_username}</span>
               </p>
             </div>
           </NavLink>
-        )
+        );
       }
     } else {
       if (filterMsgs.length === 0) {
@@ -50,7 +48,7 @@ function Inbox({ userInbox, unreadMessages }) {
           >
             <div>
               <p>
-                Conversation with <span>{conversation.user_a_username}</span>
+                Conversation with <span>{conversation.user_b_username}</span>
               </p>
             </div>
           </NavLink>
@@ -62,15 +60,13 @@ function Inbox({ userInbox, unreadMessages }) {
             key={conversation.convo.id}
           >
             <div>
-              <span>
-                {filterMsgs.length}
-              </span>
+              <span>{filterMsgs.length}</span>
               <p>
-                Conversation with <span>{conversation.user_a_username}</span>
+                Conversation with <span>{conversation.user_b_username}</span>
               </p>
             </div>
           </NavLink>
-        )
+        );
       }
     }
   });
@@ -78,9 +74,15 @@ function Inbox({ userInbox, unreadMessages }) {
     <div>
       <Navbar />
       <div>
-        <h1>Inbox</h1>
-        <div className="inbox-container">
-          {inbox}
+        <div className="feed-container">
+          <div className="profile-cont">
+            <div className="profile-title">INBOX</div>
+            <div className="profile-info">
+                <div className="profile-subtitle">CONVERSATIONS</div>
+                <div className="show-line" />
+              </div>
+            <div className="inbox-container">{inbox}</div>
+          </div>
         </div>
       </div>
       <Footer />

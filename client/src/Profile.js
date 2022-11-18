@@ -202,7 +202,8 @@ function Profile({ users, current }) {
           )}
         </div>
       </div>
-      {/* <Footer style={profileFooter} /> */}
+      <div className="other-line" />
+      {/* <Footer /> */}
     </div>
   );
 }

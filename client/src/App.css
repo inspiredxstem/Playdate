@@ -426,6 +426,13 @@ h1 {
   margin-bottom: 30px;
 }
 
+.other-line {
+  width: 80%;
+  border: 0px solid var(--wht);
+  margin-bottom: 30px;
+  padding-bottom: 50px;
+}
+
 .profile-buttons {
   display: flex;
   justify-content: space-evenly;
@@ -481,6 +488,7 @@ h1 {
 }
 
 /* ------------------------------- */
+
 .conv-page-container {
   background-color: green;
   position: sticky;
@@ -490,24 +498,24 @@ h1 {
 }
 
 .conv-page-content {
-  height: auto;
-  background-color: white;
-  margin-left: 12%;
-  margin-right: 13%;
-  padding: 3%;
-  min-width: 1000px;
+  padding: 20px 20px 40px;
+  margin: 20px 0px 60px;
+  background-color: var(--wht);
+  color: var(--blk);
+  height: 65vh;
+  width: 500px;
+  border-radius: 10px;
 }
 
-.chat-page {
+/* .chat-page {
   padding-top: 0px;
-  height: 60em;
-}
+  height: 80vh;
+} */
 
 .message-container {
   padding-top: 30px;
-  padding-left: 15%;
-  padding-right: 15%;
-  padding-bottom: 30px;
+  padding-left: 4%;
+  padding-right: 4%;
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-start;
@@ -520,12 +528,17 @@ h1 {
 }
 
 .sentMsg-temp {
-  height: fit-content;
-  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: var(--cerise-0);
+  color: var(--wht);
   border-radius: 30px;
-  padding: 20px;
-  font-size: 20px;
-  font-family: "Prompt", sans-serif;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-family: "Futura", sans-serif;
+  margin: 3px 0;
 }
 
 .receivedMsg {
@@ -545,9 +558,36 @@ h1 {
   padding-top: 40px;
   width: 400px;
   height: 100px;
-  border: 50px solid green;
   margin: auto;
   text-align: center;
   font-size: 32px;
   font-weight: bold;
+}
+
+.message-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 498.5px;
+  margin: 25px 0 0 0;
+}
+
+.message-button {
+  background-color: var(--green-1);
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 0;
+}
+
+.message-button:hover {
+  background-color: var(--green-2);
+  transform: none;
+}
+
+.message-input {
+  width: 78%;
+  border: none;
+  background-color: var(--grey-4);
+  border-radius: 20px;
+  padding: 4px 12px;
 }

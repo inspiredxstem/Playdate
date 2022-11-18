@@ -1,7 +1,7 @@
-import { React, useEffect, useRef, useState } from "react"
-import { useParams } from "react-router"
-import { createConsumer } from "@rails/actioncable"
-import axios from 'axios'
+import { React, useEffect, useRef, useState } from "react";
+import { useParams } from "react-router";
+import { createConsumer } from "@rails/actioncable";
+import axios from "axios";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -101,9 +101,11 @@ function Chatbox({ unreadMessages, setUnreadMessages }) {
     const filterMsgs = unreadMessages.filter((msg) => {
       return msg.conversation_id == params.id;
     });
-    setUnreadMessages([...unreadMessages].filter((msg) => {
-      return !filterMsgs.includes(msg);
-    }));
+    setUnreadMessages(
+      [...unreadMessages].filter((msg) => {
+        return !filterMsgs.includes(msg);
+      })
+    );
 
     if (filterMsgs.length !== 0) {
       filterMsgs.forEach((msg) => {
@@ -129,7 +131,7 @@ function Chatbox({ unreadMessages, setUnreadMessages }) {
           <div className="sentMsg" key={msg.id}>
             {sentUser}
             <div className="sentMsg-temp">
-              <p>{msg.msgbody}</p>
+              <div>{msg.msgbody}</div>
             </div>
           </div>
         );
@@ -178,11 +180,12 @@ function Chatbox({ unreadMessages, setUnreadMessages }) {
     return (
       <div>
         <Navbar />
-        <div className="conv-page-container chat-page">
-          <div className="conv-page-content chat-page">
+        {/* <div className="conv-page-container chat-page"> */}
+        <div className="feed-container">
+          <div className="conv-page-content">
             <div className="message-container">{renderMessages}</div>
-            <div className="message-form">
-              <form onSubmit={handleSubmit}>
+            <div>
+              <form className="message-form" onSubmit={handleSubmit}>
                 <input
                   type="text"
                   value={newMessage}
@@ -192,7 +195,7 @@ function Chatbox({ unreadMessages, setUnreadMessages }) {
                   className="message-input"
                 />
                 <button type="submit" className="message-button">
-                  Send
+                  <i className="bx bxs-send"></i>
                 </button>
               </form>
             </div>

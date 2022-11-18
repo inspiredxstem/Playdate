@@ -5,7 +5,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Pets from "./Pets";
 import Inbox from "./Inbox";
-import Chat from "./Chat";
+import Chatbox from "./Chatbox";
 import Profile from "./Profile";
 import NotFound from "./NotFound";
 import axios from "axios";
@@ -104,14 +104,11 @@ function App() {
             />
           }
         />
-        <Route 
-          path="/inbox" 
-          element= {
-            <Inbox
-              userInbox={userInbox}
-              unreadMessages={unreadMessages} 
-            />
-          } 
+        <Route
+          path="/inbox"
+          element={
+            <Inbox userInbox={userInbox} unreadMessages={unreadMessages} />
+          }
         />
         <Route
           path="/inbox/:id"
@@ -122,7 +119,7 @@ function App() {
             />
           }
         />
-        {/* <Route path="/me" element={<Profile current={currentUser} />} /> */}
+        <Route path="/me" element={<Profile current={currentUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
