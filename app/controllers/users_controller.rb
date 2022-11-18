@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     def index
         users = User.all_except(current_user)
         render json: users
-        # Going to add pet_params to this later
     end
     
     def create
@@ -52,6 +51,10 @@ class UsersController < ApplicationController
     end
 
     def pet_params
+        params.permit(:bio, :name, :age, :animal, :gender, :profile_pic)
+    end
+
+    def update_params
         params.permit(:bio, :name, :age, :animal, :gender, :profile_pic)
     end
 

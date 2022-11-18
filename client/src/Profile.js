@@ -5,23 +5,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Profile({ users, current }) {
-  const [isEditingUser, setIsEditingUser] = useState(false);
-
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [bio, setBio] = useState("");
-  const [species, setSpecies] = useState("");
-  // const [location, setLocation] = useState("");
-  // const [breed, setBreed] = useState("");
-  const [profile_pic, setProfile_pic] = useState("");
-
-  const navigate = useNavigate();
   const userDetails = JSON.parse(localStorage.getItem("current_user"));
   const currentUser = userDetails.user;
+
+  const [isEditingUser, setIsEditingUser] = useState(false);
+
+  const [username, setUsername] = useState(currentUser.username);
+  const [password, setPassword] = useState(currentUser.password);
+
+  const [name, setName] = useState(currentUser.name);
+  const [age, setAge] = useState(currentUser.age);
+  const [gender, setGender] = useState(currentUser.gender);
+  const [bio, setBio] = useState(currentUser.bio);
+  const [species, setSpecies] = useState(currentUser.animal);
+  const [profile_pic, setProfile_pic] = useState(currentUser.profile_pic);
+
+  const navigate = useNavigate();
 
   // const profileFooter = {
   //   position: "relative",
@@ -32,35 +31,41 @@ function Profile({ users, current }) {
   };
 
   function handleEditUser(e) {
-    e.preventDefault();
-    axios.patch(`http://localhost:3000/users/${currentUser.id}`,
-      {
-        username: username,
-        password: password,
-        name: name,
-        age: age,
-        gender: gender,
-        bio: bio,
-        species: species,
-        // location: location,
-        // breed: breed,
-        profile_pic: profile_pic
-      });
-    console.log("User details successfully edited");
-    window.location.reload();
+    // e.preventDefault();
+    axios.patch(`http://localhost:3000/users/${currentUser.id}`, {
+      username: username,
+      password: password,
+      name: name,
+      age: age,
+      gender: gender,
+      bio: bio,
+      species: species,
+      profile_pic: profile_pic,
+    });
+    console.log({
+      username,
+      name,
+      age,
+      gender,
+      bio,
+      species,
+      profile_pic,
+    });
+    handleLogout();
   }
 
   function handleDelete() {
     fetch(`http://localhost:3000/users/${currentUser.id}`, {
       method: "DELETE",
     });
-    localStorage.removeItem("current_user");
+    localStorage.clear("current_user");
     alert(`Sorry to see you go, @${currentUser.username}!`);
     navigate("/");
+    window.location.reload();
   }
 
   function handleLogout() {
-    localStorage.removeItem("current_user");
+    localStorage.clear("current_user");
     console.log("You have successfully logged out");
     navigate("/");
     window.location.reload();
@@ -96,7 +101,7 @@ function Profile({ users, current }) {
                   <input
                     type="password"
                     placeholder={currentUser.password}
-                    value={current - password}
+                    value={currentUser.password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className="line" />
@@ -149,7 +154,7 @@ function Profile({ users, current }) {
                 </div>
                 <div className="submit-btn">
                   <button type="submit" id="edit-form-submit">
-                    SAVE CHANGES
+                    LOGOUT TO SAVE CHANGES
                   </button>
                 </div>
               </form>
@@ -162,7 +167,7 @@ function Profile({ users, current }) {
                 <div className="profile-category">username</div>
                 <div className="profile-values">{currentUser.username}</div>
                 <div className="profile-category">password</div>
-                <div className="profile-values">{currentUser.password}</div>
+                <div className="profile-values">●●●●●●●●</div>
               </div>
               <div className="line" />
               <div className="profile-info">

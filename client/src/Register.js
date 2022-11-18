@@ -6,12 +6,19 @@ import { useNavigate } from "react-router-dom";
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
+
   const navigate = useNavigate();
 
   function handleRegister(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/users", { username, password })
+      .post("http://localhost:3000/users", {
+        username,
+        password,
+        // password_confirmation: password,
+      })
       .then((r) => {
         const loggedInUser = r.data;
         localStorage.setItem("jwt", loggedInUser.token);
@@ -51,10 +58,18 @@ function Register() {
         />
         <input
           type="password"
-          title="username"
+          title="password"
           placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          title="password_confirmation"
+          placeholder="confirm password"
+          // value={passwordConfirmation}
+          // onChange={(e) => setPasswordConfirmation(e.target.value)}
+          // this isn't functional yet
         />
         <button type="submit">REGISTER</button>
       </form>

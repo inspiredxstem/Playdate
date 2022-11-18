@@ -23,6 +23,7 @@ function Login() {
         // setCurrentUser(current_user);
         console.log(`Hi, @${current_user.username}!`);
         navigate("/pets");
+        window.location.reload();
       })
       .catch(function (error) {
         if (error.response) {

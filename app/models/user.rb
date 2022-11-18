@@ -9,7 +9,8 @@ class User < ApplicationRecord
     has_many :messages
 
     validates :username, presence: true, uniqueness: true
-    validates :password, presence: true
+    validates :password, presence: true, confirmation: true
+
     # validates :profile_pic, presence: true
     # commented the above out because new users don't have a profile pic yet
 
