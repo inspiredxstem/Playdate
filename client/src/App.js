@@ -53,16 +53,15 @@ function App() {
     setCurrentUser(user);
     setUserInbox([...user.get_conversations]);
 
-    // const allUnreadMessages = []
-    // user?.get_conversations.forEach(conversation => {
-    //   conversation.convo?.unread_messages(message => {
-    //     if(message.user_id !== user.id){
-    //       allUnreadMessages.push(message)
-    //     }
-    //   })
-    // })
-    // setUnreadMessages([...allUnreadMessages])
-    console.log(user);
+    const allUnreadMessages = [];
+    user.get_conversations.forEach((conversation) => {
+      conversation.unread_messages.forEach((message) => {
+        if (message.user_id !== user.id) {
+          allUnreadMessages.push(message);
+        }
+      });
+    });
+    setUnreadMessages([...allUnreadMessages]);
   }
 
   useEffect(() => {
@@ -74,6 +73,15 @@ function App() {
         .then((res) => {
           setCurrentUser(res.data);
           setUserInbox([...res.data.get_conversations]);
+          const allUnreadMessages = [];
+          res.data.get_conversations.forEach((conversation) => {
+            conversation.unread_messages.forEach((message) => {
+              if (message.user_id !== res.data.id) {
+                allUnreadMessages.push(message);
+              }
+            });
+          });
+          setUnreadMessages([...allUnreadMessages]);
         });
     }
   }, []);
@@ -96,18 +104,25 @@ function App() {
             />
           }
         />
-        <Route path="/inbox" element={<Inbox />} />
+        <Route 
+          path="/inbox" 
+          element= {
+            <Inbox
+              userInbox={userInbox}
+              unreadMessages={unreadMessages} 
+            />
+          } 
+        />
         <Route
           path="/inbox/:id"
           element={
-            <Chat
-              currentUser={currentUser}
+            <Chatbox
               unreadMessages={unreadMessages}
               setUnreadMessages={setUnreadMessages}
             />
           }
         />
-        <Route path="/me" element={<Profile users={users} />} />
+        {/* <Route path="/me" element={<Profile current={currentUser} />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

@@ -18,7 +18,7 @@ function Login({handleCurrentUser}) {
       .then((r) => {
         // handleCurrentUser(r.data.user)
         // localStorage.setItem('jwt', r.data.token)
-        // localStorage.setItem("user", JSON.stringify(r.data.user))
+        localStorage.setItem("user", JSON.stringify(r.data.user))
         // navigate("/pets")
         const loggedInUser = r.data;
         localStorage.setItem("jwt", loggedInUser.token);
