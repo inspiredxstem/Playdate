@@ -1,7 +1,16 @@
 import "./App.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate()
+
+  function signOut(){
+    if(localStorage.getItem('jwt')){
+      localStorage.clear()
+      navigate('/')    
+    }
+  }
+
   return (
     <div className="navbar sticky">
       <Link to="/pets">
@@ -19,6 +28,9 @@ function Navbar() {
         <Link className="ProfileLink" to="/me">
           <i className="bx bxs-user"></i>
         </Link>
+        <div onClick={signOut}>
+          LogOut
+        </div>
       </nav>
     </div>
   );

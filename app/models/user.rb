@@ -9,7 +9,7 @@ class User < ApplicationRecord
     has_many :messages
 
     validates :username, presence: true, uniqueness: true
-    validates :password, presence: true, confirmation: true
+    # validates :password, presence: true, confirmation: true
 
     # validates :profile_pic, presence: true
     # commented the above out because new users don't have a profile pic yet
@@ -25,7 +25,8 @@ class User < ApplicationRecord
             info = {
                 convo: convo,
                 user_a_username: User.find(convo.user_a_id).username,
-                user_b_username: User.find(convo.user_b_id).username
+                user_b_username: User.find(convo.user_b_id).username,
+                unread_messages: convo.messages.where(read: false)
             }
             conversations << info
         end
@@ -34,7 +35,9 @@ class User < ApplicationRecord
             info = {
                 convo: convo,
                 user_a_username: User.find(convo.user_a_id).username,
-                user_b_username: User.find(convo.user_b_id).username
+                user_b_username: User.find(convo.user_b_id).username,
+                unread_messages: convo.messages.where(read: false)
+
             }
             conversations << info
         end

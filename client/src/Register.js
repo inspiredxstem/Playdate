@@ -27,6 +27,9 @@ function Register() {
         // setCurrentUser(current_user);
         console.log(`Welcome, @${current_user.username}!`);
         navigate("/me");
+        // localStorage.setItem('jwt', r.data.token)
+        // localStorage.setItem("user", JSON.stringify(r.data.user))
+        // navigate("/pets");
       })
       .catch(function (error) {
         if (error.response) {
