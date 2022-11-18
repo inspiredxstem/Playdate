@@ -108,7 +108,7 @@ function Profile({ users, current }) {
                   <div className="line" />
                   <div className="profile-subtitle">PET</div>
                   <div className="show-line" />
-                  <div className="profile-category">name</div>
+                  <div className="profile-category">pet name</div>
                   <input
                     type="text"
                     placeholder={currentUser.name}
@@ -173,7 +173,7 @@ function Profile({ users, current }) {
               <div className="profile-info">
                 <div className="profile-subtitle">PET</div>
                 <div className="show-line" />
-                <div className="profile-category">name</div>
+                <div className="profile-category">pet name</div>
                 <div className="profile-values">{currentUser.name}</div>
                 <div className="profile-category">bio</div>
                 <div className="profile-values">{currentUser.bio}</div>

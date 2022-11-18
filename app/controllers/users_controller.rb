@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: [:create, :login, :destroy, :update]
+    # skip_before_action :authorize, only: [:create, :login, :destroy, :update]
     # Will remove :destroy and :update skip later, just for testing
-    # before_action :authorize, only:[:me]
+    before_action :authorize, only:[:me]
     
     def index
         users = User.all_except(current_user)

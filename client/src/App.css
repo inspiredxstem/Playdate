@@ -152,7 +152,7 @@ p {
   align-items: center;
 }
 
-.MailLink {
+.nav-link {
   height: 40px;
   width: 50px;
   display: grid;
@@ -163,39 +163,7 @@ p {
   transition: 0.4s;
 }
 
-.MailLink:hover {
-  cursor: pointer;
-  transform: translateY(-2px);
-}
-
-.FeedLink {
-  height: 40px;
-  width: 50px;
-  display: grid;
-  font-size: 20px;
-  text-decoration-line: none;
-  color: var(--wht);
-  align-content: center;
-  transition: 0.4s;
-}
-
-.FeedLink:hover {
-  cursor: pointer;
-  transform: translateY(-2px);
-}
-
-.ProfileLink {
-  height: 40px;
-  width: 50px;
-  display: grid;
-  font-size: 20px;
-  text-decoration-line: none;
-  color: var(--wht);
-  align-content: center;
-  transition: 0.4s;
-}
-
-.ProfileLink:hover {
+.nav-link:hover {
   cursor: pointer;
   transform: translateY(-2px);
 }
@@ -329,6 +297,13 @@ h1 {
   padding: 0 10px 0 7px;
 }
 
+.pet-location {
+  color: var(--grey-1);
+  font-size: 14px;
+  font-family: "Futura", sans-serif;
+  padding: 0 10px 0 7px;
+}
+
 .pet-info {
   padding: 3px;
 }
@@ -356,6 +331,24 @@ h1 {
   align-items: baseline;
 }
 
+.pet-user {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: var(--grey-3);
+  font-size: 15px;
+  font-family: "Futura", sans-serif;
+}
+
+.pet-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 0 7px;
+}
+
 .chat-link {
   color: var(--grey-2);
   padding-right: 7px;
@@ -365,6 +358,7 @@ h1 {
 
 .chat-link:hover {
   color: var(--cerise-1);
+  cursor: pointer;
 }
 
 .profile-cont {
@@ -442,7 +436,6 @@ h1 {
   background-color: var(--cerise-1);
 }
 
-
 #edit-button {
   color: var(--grey-3);
   transition: 0.3s;
@@ -482,7 +475,7 @@ h1 {
 .pfp-preview {
   height: 120px;
   width: 120px;
-  border-radius: 20%;
+  border-radius: 7%;
   object-fit: cover;
   margin: 10px 0;
 }
@@ -510,7 +503,7 @@ h1 {
   height: 60em;
 }
 
-.message-container{
+.message-container {
   padding-top: 30px;
   padding-left: 15%;
   padding-right: 15%;
@@ -519,10 +512,10 @@ h1 {
   flex-direction: column-reverse;
   align-items: flex-start;
   height: 85%;
-  overflow: auto
+  overflow: auto;
 }
 
-.sentMsg { 
+.sentMsg {
   align-self: flex-end;
 }
 
@@ -532,7 +525,7 @@ h1 {
   border-radius: 30px;
   padding: 20px;
   font-size: 20px;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
 }
 
 .receivedMsg {
@@ -545,5 +538,5 @@ h1 {
   border-radius: 30px;
   padding: 20px;
   font-size: 20px;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
 }
